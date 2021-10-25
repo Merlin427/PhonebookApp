@@ -3,7 +3,8 @@
 <div class="hpanel">
   <div class="panel-heading "><h4>{{phonebook.name}}</h4></div>
   <div>
-    <div *ngIf="!entriesLoaded">
+    <div *ngIf="!entriesLoaded"
+    class="list-group-item clearfix padded">
       <h4>Click <strong>New</strong> to add a contact</h4>
     </div>
     <div class="panel-body">

@@ -50,6 +50,7 @@ namespace PhonebookApi.Repositories
                 {
                     PhonebookId = entries.PhonebookId,
                     ContactName = entries.ContactName,
+                    PhoneNumber = entries.PhoneNumber,
                     Id = entries.Id
                 })
             };
