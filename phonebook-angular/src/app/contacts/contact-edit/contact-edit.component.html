@@ -1,0 +1,51 @@
+<div class="hpanel">
+  <div class="panel-heading"><h4>Edit Contact</h4></div>
+  <div class="panel-body">
+    <div class="row">
+      <div class="col-lg-12">
+        <form (ngSubmit)="onSubmit()" #f="ngForm">
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="form-group">
+                <label>Contact Name</label>
+                <input
+                  required
+                  name="contactName"
+                  #contactName="ngModel"
+                  [(ngModel)]="contact.contactName"
+                  class="form-control"
+                  type="text"
+                  placeholder="Contact Name"/>
+                <span class="help-block red"
+                      *ngIf="!contactName.valid && contactName.touched"
+                >A phonebook name is required</span>
+              </div>
+            </div>
+            <div class="col-lg-12">
+              <div class="form-group">
+                <label>Contact Number</label>
+                <input
+                  required
+                  name="phoneNumber"
+                  #phoneNumber="ngModel"
+                  [(ngModel)]="contact.phoneNumber"
+                  class="form-control"
+                  type="text"
+                  placeholder="Contact Number"/>
+                <span class="help-block red"
+                      *ngIf="!phoneNumber.valid && phoneNumber.touched"
+                >A phonebook name is required</span>
+              </div>
+            </div>
+            <div class="btn-toolbar">
+              <div class="col-lg-12">
+                <button  class="btn btn-default btn-xs mr-3 pull-right" type="submit">Save</button>
+                <button type="button" class="btn btn-default btn-xs  pull-right" [routerLink]="['/phonebookList', contact.phonebookId]">Cancel</button>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,36 @@
+<div class="hpanel">
+  <div class="panel-heading"><h4>Edit {{phonebook.name}} Phonebook</h4></div>
+  <div class="panel-body">
+    <form (ngSubmit)="onSubmit()" #f="ngForm">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="form-group">
+                <label>Edit Phonebook Name</label>
+                <input
+                  required
+                  name="phonebookName"
+                  #phonebookName="ngModel"
+                  class="form-control"
+                  type="text"
+                  [(ngModel)]="phonebook.name"
+                  placeholder="Phonebook Name"/>
+                <span class="help-block red"
+                      *ngIf="!phonebookName.valid && phonebookName.touched"
+                >A phonebook name is required</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-12">
+            <button class="btn btn-default btn-xs mr-3 pull-right" type="submit">Save</button>
+            <button class="btn btn-default btn-xs mr-3 pull-right" routerLink="/phonebookList">Cancel</button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+

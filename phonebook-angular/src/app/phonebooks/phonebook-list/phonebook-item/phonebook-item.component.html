@@ -1,0 +1,23 @@
+<div
+  *ngFor="let phonebook of phonebooks"
+  class="list-group-item clearfix padded">
+  <div>
+    <div class="pull-left">
+      <a [routerLink]="['/phonebookList',phonebook.id]"><h4>{{phonebook.name}}</h4></a>
+
+    </div>
+    <div class="btn-toolbar">
+      <button type="button"
+              class="btn btn-success btn-xs mr-3 pull-right"
+              [routerLink]="['/editPhoneBook', phonebook.id]">Edit
+      </button>
+      <button type="button"
+              class="btn btn-danger btn-xs  pull-right"
+              (click)="openDialog(phonebook.id)">Delete
+      </button>
+    </div>
+  </div>
+</div>
+
+
+

@@ -1,0 +1,36 @@
+<div class="hpanel">
+  <div class="panel-heading"><h4>Add New Phonebook</h4></div>
+  <div class="panel-body">
+    <form (ngSubmit)="onSubmit()" #f="ngForm">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="form-group">
+                <label>New Phonebook Name</label>
+                <input
+                  required
+                  name="phonebookName"
+                  #phonebookName="ngModel"
+                  [(ngModel)]="phonebook.name"
+                  class="form-control"
+                  placeholder="Phonebook Name"
+                  type="text"/>
+                <span class="help-block red"
+                      *ngIf="!phonebookName.valid && phonebookName.touched"
+                >A phonebook name is required</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-12">
+            <button class="btn btn-default btn-xs pull-right" type="submit">Add</button>
+            <button class="btn btn-default btn-xs pull-right" routerLink="/phonebookList">Cancel</button>
+          </div>
+        </div>
+      </div>
+    </form>
+
+  </div>
+</div>
