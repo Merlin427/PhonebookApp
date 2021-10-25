@@ -18,9 +18,9 @@ Step 3 - Use the command: `ng s` (to start the application).
 
 ## Backend
 
-Step 4 - Navigate to the PhonebookApi folder and open the solution in Rider. In Startup.cs, update the connction string to your local postgres server. 
-Step 5 - From within the solution folder, run the command: `dotnet restore`  (This will update the NuGet packages)
-Step 6 - From within the project folder, with your postgres server running, run the command: `dotnet ef database update` (this will creaete the database and run the migrations)
+Step 4 - Navigate to the PhonebookApi folder and open the solution in Rider. In Startup.cs, update the connction string to your local postgres server. </br>
+Step 5 - From within the solution folder, run the command: `dotnet restore`  (This will update the NuGet packages)</br>
+Step 6 - From within the project folder, with your postgres server running, run the command: `dotnet ef database update` (this will creaete the database and run the migrations)</br>
 Step 7 - Hit the play button in the top right-hand toolbar. 
 
 The application should be runnig at http://localhost:4200
