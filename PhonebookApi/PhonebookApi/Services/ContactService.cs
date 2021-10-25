@@ -8,7 +8,7 @@ namespace PhonebookApi.Services
 {
     public interface IContactService
     {
-        PhonebookEntry GetEntry(int id);
+        ContactViewModel GetEntry(int id);
         List<PhonebookEntry> GetForPhoneBook(int phonebookId);
         public void Create(ContactCreationModel model);
         public void Update(ContactCreationModel model);
@@ -26,9 +26,10 @@ namespace PhonebookApi.Services
             _mapper = mapper;
         }
 
-        public PhonebookEntry GetEntry(int id)
+        public ContactViewModel GetEntry(int id)
         {
-            throw new System.NotImplementedException();
+            var contact = _phoneBookEntryRepo.GetSingle(id);
+            return contact;
         }
 
         public List<PhonebookEntry> GetForPhoneBook(int phonebookId)

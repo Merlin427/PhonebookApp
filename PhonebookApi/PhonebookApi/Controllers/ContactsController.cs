@@ -15,6 +15,13 @@ namespace PhonebookApi.Controllers
             _contactService = contactService;
         }
 
+        [HttpGet("{id}")]
+        public IActionResult GetSingle(int id)
+        {
+            var contact =_contactService.GetEntry(id);
+            return Ok(contact);
+        }
+
 
         [HttpPost("create")]
         public IActionResult Create([FromBody] ContactCreationModel model)

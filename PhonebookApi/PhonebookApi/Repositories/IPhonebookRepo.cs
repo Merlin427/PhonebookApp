@@ -10,7 +10,7 @@ namespace PhonebookApi.Repositories
     public interface IPhonebookRepo : IRepository<Phonebook>
     {
         IQueryable<PhonebookEntriesViewModel> GetPhonebooks();
-        Phonebook GetSingle(int id);
+        PhonebookEntriesViewModel GetSingle(int id);
 
     }
 
@@ -39,11 +39,21 @@ namespace PhonebookApi.Repositories
             });
         }
 
-        public Phonebook GetSingle(int id)
+        public PhonebookEntriesViewModel GetSingle(int id)
         {
             var phonebook = _context.Phonebooks.Include(x => x.PhonebookEntries).FirstOrDefault(x => x.Id == id);
-
-            return phonebook;
+            var returnModel = new PhonebookEntriesViewModel()
+            {
+                Id = phonebook.Id,
+                Name = phonebook.Name,
+                Entries = phonebook.PhonebookEntries.Select(entries => new ContactViewModel()
+                {
+                    PhonebookId = entries.PhonebookId,
+                    ContactName = entries.ContactName,
+                    Id = entries.Id
+                })
+            };
+            return returnModel;
         }
     }
 }

@@ -10,7 +10,7 @@ namespace PhonebookApi.Services
 {
     public interface IPhonebookService
     {
-        Phonebook GetPhonebook(int id);
+        PhonebookEntriesViewModel GetPhonebook(int id);
         List<PhonebookEntriesViewModel> GetPhonebooksWithEntries();
         List<Phonebook> GetPhonebooks();
         public void CreatePhonebook(PhonebookCreationModel model);
@@ -32,9 +32,10 @@ namespace PhonebookApi.Services
             _mapper = mapper;
         }
 
-        public Phonebook GetPhonebook(int id)
+        public PhonebookEntriesViewModel GetPhonebook(int id)
         {
             var phonebook = _phonebookRepo.GetSingle(id);
+
             return phonebook;
         }
 
