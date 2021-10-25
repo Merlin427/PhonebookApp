@@ -10,6 +10,7 @@ import {DeleteDialogueComponent} from "../../../delete-dialogue/delete-dialogue.
 })
 export class PhonebookItemComponent implements OnInit {
   phonebooks: any[];
+  phonebooksLoaded: boolean = false
 
 
   constructor(
@@ -37,10 +38,15 @@ export class PhonebookItemComponent implements OnInit {
   getPhonebooks(){
     this.phonebookService.getPhonebooksFromApi().subscribe((res: any) => {
       this.phonebooks = res;
+      if(this.phonebooks.length > 0)
+      {
+        this.phonebooksLoaded=true;
+      }
     });
   }
 
   onDeletePhonebook(phonebookId: number){
+    this.phonebooksLoaded = false;
     this.phonebookService.deletePhonebook(phonebookId).subscribe(res => {
       this.getPhonebooks();
     })

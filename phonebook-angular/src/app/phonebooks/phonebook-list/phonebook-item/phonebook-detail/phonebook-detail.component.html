@@ -1,21 +1,29 @@
+
+
 <div class="hpanel">
   <div class="panel-heading "><h4>{{phonebook.name}}</h4></div>
   <div>
+    <div *ngIf="!entriesLoaded">
+      <h4>Click <strong>New</strong> to add a contact</h4>
+    </div>
     <div class="panel-body">
       <div class="row">
-        <div class="col-lg-12 ">
-          <div class="row">
-            <div class="list-group-item clearfix padded"
-                 *ngFor="let entry of phonebook.entries">
-              <div class="col-xs-4">{{entry.contactName}}</div>
-              <div class="col-xs-4">{{entry.phoneNumber}}</div>
-              <div class="col-xs-4">
-                <div class="btn-toolbar">
-                  <button type="button" class="btn btn-success btn-xs mr-3 pull-right"
-                          [routerLink]="['/editContact', entry.id]">Edit
-                  </button>
-                  <button type="button" class="btn btn-danger btn-xs  pull-right"
-                          (click)="openDialog(entry.id)">Delete</button>
+        <div *ngIf="entriesLoaded">
+          <div class="col-lg-12 ">
+            <div class="row">
+              <div class="list-group-item clearfix padded"
+                   *ngFor="let entry of phonebook.entries">
+                <div class="col-xs-4">{{entry.contactName}}</div>
+                <div class="col-xs-4">{{entry.phoneNumber}}</div>
+                <div class="col-xs-4">
+                  <div class="btn-toolbar">
+                    <button type="button" class="btn btn-success btn-xs mr-3 pull-right"
+                            [routerLink]="['/editContact', entry.id]">Edit
+                    </button>
+                    <button type="button" class="btn btn-danger btn-xs  pull-right"
+                            (click)="openDialog(entry.id)">Delete
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>
@@ -35,3 +43,4 @@
     </div>
   </div>
 </div>
+

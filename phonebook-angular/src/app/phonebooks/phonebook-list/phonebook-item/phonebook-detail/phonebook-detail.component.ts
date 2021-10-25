@@ -13,6 +13,7 @@ import {MatDialog} from "@angular/material/dialog";
 })
 export class PhonebookDetailComponent implements OnInit {
   id: number = 0;
+  entriesLoaded: boolean = false;
   phonebook: IPhonebook = {
     id: 0,
     name: '',
@@ -40,6 +41,7 @@ export class PhonebookDetailComponent implements OnInit {
     const dialogRef = this.dialog.open(DeleteDialogueComponent);
 
     dialogRef.afterClosed().subscribe(result => {
+      console.log(result)
       if(result == true){
         this.onDelete(id)
       }
@@ -49,10 +51,14 @@ export class PhonebookDetailComponent implements OnInit {
   getPhoneBook(){
     this.phonebookService.getPhonebook(this.id).subscribe(res => {
       this.phonebook = res;
-    })
+      if(this.phonebook.entries.length > 0){
+        this.entriesLoaded = true;
+      }
+    });
   }
 
   onDelete(id: number){
+   this.entriesLoaded = false;
     this.contactService.deleteContact(id).subscribe(res => {
       this.getPhoneBook()
     });

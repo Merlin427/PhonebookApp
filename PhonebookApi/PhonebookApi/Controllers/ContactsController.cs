@@ -40,7 +40,7 @@ namespace PhonebookApi.Controllers
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
-            
+            _contactService.Delete(id);
         }
     }
 }
